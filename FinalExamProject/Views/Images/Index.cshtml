@@ -23,7 +23,8 @@
             @Html.DisplayFor(modelItem => item.ImageName)
             <br />
             <a href="@Url.Action("Details", "Images", new { id=item.ImageId})">
-                <img src="~/Pictures/@item.ImageName" class="imageSizing" />
+                <img src="~/Pictures/@(item.ImageId + item.ImageExtension)" class="imageSizing" />
+
             </a>
         </td>
     </tr>

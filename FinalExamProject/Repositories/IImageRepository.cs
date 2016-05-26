@@ -12,6 +12,6 @@ namespace FinalExamProject.Repositories
         IEnumerable<Image> GetAll(string search);
         Image Find(int id);
         void Delete(int id);
-        void InsertOrUpdate(Image image);
+        int InsertOrUpdate(Image image);
     }
 }

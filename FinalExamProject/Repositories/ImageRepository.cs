@@ -29,7 +29,7 @@ namespace FinalExamProject.Repositories
             return selectedImages;
         }
 
-        public void InsertOrUpdate(Image image)
+        public int InsertOrUpdate(Image image)
         {
             if (image.ImageId == 0)
             {
@@ -40,6 +40,8 @@ namespace FinalExamProject.Repositories
                 db.Entry(image).State = EntityState.Modified;
             }
             db.SaveChanges();
+            int id = image.ImageId;
+            return id;
         }
     }
 }

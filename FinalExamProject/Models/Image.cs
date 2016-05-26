@@ -12,5 +12,7 @@ namespace FinalExamProject.Models
 
         [Required]
         public string ImageName { get; set; }
+
+        public string ImageExtension { get; set; }
     }
 }

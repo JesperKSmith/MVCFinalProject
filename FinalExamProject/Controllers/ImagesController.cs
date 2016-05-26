@@ -2,6 +2,7 @@
 using FinalExamProject.Repositories;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -52,13 +53,43 @@ namespace FinalExamProject.Controllers
             return View();
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public ActionResult Create(Image image)
         {
             if (ModelState.IsValid)
             {
                 repo.InsertOrUpdate(image);
                 return RedirectToAction("Index");
+            }
+            return View();
+        }*/
+
+        [HttpPost]
+        public ActionResult Create(Image image, HttpPostedFileBase fileAccess)
+        {
+            if (ModelState.IsValid)
+            {
+                //db
+                int id = repo.InsertOrUpdate(image);
+                //file
+                var count = Request.Files.Count;
+                if (count > 0)
+                {
+                    var files = Request.Files[0];
+                    if (files.ContentLength > 0)
+                    {
+                        string extension = Path.GetExtension(files.FileName);
+                        var fileName = "" + id + extension;
+                        var fileLocation = Path.Combine(Server.MapPath("~/Pictures"), fileName);
+                        files.SaveAs(fileLocation);
+
+                        Image temp = repo.Find(id);
+                        temp.ImageExtension = extension;
+                        repo.InsertOrUpdate(temp);
+
+                        return RedirectToAction("Index");
+                    }
+                }
             }
             return View();
         }

@@ -14,7 +14,7 @@
             @Html.DisplayNameFor(model => model.ImageName)
             @Html.DisplayFor(model => model.ImageName)
             <br />
-            <img src="~/Pictures/@Model.ImageName" class="imageDetail" />
+            <img src="~/Pictures/@(Model.ImageId + Model.ImageExtension)" class="imageDetail" />
         </dt>
     </dl>
 </div>

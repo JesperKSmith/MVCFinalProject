@@ -39,7 +39,7 @@
         </td>
         <td>
             <a href="@Url.Action("Details", "Images", new { id=item.ImageId})">
-                <img src="~/Pictures/@item.LampImage.ImageName" class="imageSizing" />
+                <img src="~/Pictures/@(item.LampImage.ImageId + item.LampImage.ImageExtension)" class="imageSizing" />
             </a>
         </td>
         <td>
