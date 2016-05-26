@@ -65,7 +65,7 @@ namespace FinalExamProject.Controllers
         }*/
 
         [HttpPost]
-        public ActionResult Create(Image image, HttpPostedFileBase fileAccess)
+        public ActionResult Create(Image image)
         {
             if (ModelState.IsValid)
             {
@@ -82,10 +82,9 @@ namespace FinalExamProject.Controllers
                         var fileName = "" + id + extension;
                         var fileLocation = Path.Combine(Server.MapPath("~/Pictures"), fileName);
                         files.SaveAs(fileLocation);
-
-                        Image temp = repo.Find(id);
-                        temp.ImageExtension = extension;
-                        repo.InsertOrUpdate(temp);
+                        //update extension
+                        image.ImageExtension = extension;
+                        repo.InsertOrUpdate(image);
 
                         return RedirectToAction("Index");
                     }
