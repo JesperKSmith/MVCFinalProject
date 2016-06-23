@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace FinalExamProject.Controllers
 {
+    [Authorize]
     public class LampsController : Controller
     {
         private ILampRepository lampRepo;
@@ -19,6 +20,7 @@ namespace FinalExamProject.Controllers
             this.imageRepo = imageRepo;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult Index(string search = "")
         {
@@ -42,6 +44,7 @@ namespace FinalExamProject.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult Details(int id)
         {
