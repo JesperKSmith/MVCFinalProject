@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Text;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FinalExamProject.Repositories;
 using Moq;
@@ -12,15 +15,33 @@ namespace FinalExamProject.Tests.Controllers
     [TestClass]
     public class LampControllerTest
     {
-        Mock<ILampRepository> mockLamp = new Mock<ILampRepository>();
-        Mock<IImageRepository> mockImage = new Mock<IImageRepository>();
+        private Mock<ILampRepository> MockLampRepo;
+        private Mock<IImageRepository> MockImageRepo;
+        private LampsController LampController;
+
+        [TestMethod]
+        public void LampIndexViewNotNull()
+        {
+            // Arrange
+            MockImageRepo = new Mock<IImageRepository>();
+            MockLampRepo = new Mock<ILampRepository>();
+            LampController = new LampsController(MockLampRepo.Object, MockImageRepo.Object);
+
+            // Act
+            ViewResult result = LampController.Index() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
 
         [TestMethod]
         public void InsertOrUpdate()
         {
             //Arrange
-            var controllerLamp = new LampsController(mockLamp.Object, mockImage.Object);
-            var controllerImage = new ImagesController(mockImage.Object);
+            MockImageRepo = new Mock<IImageRepository>();
+            MockLampRepo = new Mock<ILampRepository>();
+            var controllerLamp = new LampsController(MockLampRepo.Object, MockImageRepo.Object);
+            var controllerImage = new ImagesController(MockImageRepo.Object);
             var image = new Image
             {
                 ImageName = "good image",
@@ -36,7 +57,7 @@ namespace FinalExamProject.Tests.Controllers
             //Act
             controllerLamp.Create(lamp);
             //Assert
-            mockLamp.Verify(m => m.InsertOrUpdate(lamp));
+            MockLampRepo.Verify(m => m.InsertOrUpdate(lamp));
         }
     }
 }

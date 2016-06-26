@@ -62,8 +62,7 @@ namespace FinalExamProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                //db
-                int id = repo.InsertOrUpdate(image);
+                
                 //file
                 var count = Request.Files.Count;
                 if (count > 0)
@@ -71,6 +70,8 @@ namespace FinalExamProject.Controllers
                     var files = Request.Files[0];
                     if (files.ContentLength > 0)
                     {
+                        //db
+                        int id = repo.InsertOrUpdate(image);
                         string extension = Path.GetExtension(files.FileName);
                         var fileName = "" + id + extension;
                         var fileLocation = Path.Combine(Server.MapPath(storagePath), fileName);
