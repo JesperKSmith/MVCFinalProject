@@ -51,6 +51,14 @@ namespace FinalExamProject.Controllers
             return View(lampRepo.Find(id));
         }
 
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult AddLike(int id)
+        {
+            lampRepo.AddLikeToLamp(id);
+            return RedirectToAction("Index");
+        }
+
         [HttpGet]
         public ActionResult Create()
         {

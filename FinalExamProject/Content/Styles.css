@@ -1,0 +1,58 @@
+﻿.input[type=file] {
+  color: #00ff21;
+}
+.jumbotron h1 {
+  color: #00004d;
+}
+.jumbotron p {
+  color: #00004d;
+}
+h1 {
+  color: #00004d;
+  font-size: 40px;
+  font-weight: bold;
+  font-family: Verdana;
+}
+h2 {
+  font-size: 30px;
+  font-family: Verdana;
+  color: #00ff21;
+}
+h3 {
+  font-size: 30px;
+  font-family: Verdana;
+  color: #f2f2f2;
+}
+h4 {
+  font-size: 30px;
+  font-family: Verdana;
+  color: #f2f2f2;
+}
+p {
+  font-size: 14px;
+  font-family: Verdana;
+  color: #FFFFFF;
+}
+label {
+  color: #f2f2f2;
+}
+strong {
+  color: #f2f2f2;
+}
+address {
+  color: #f2f2f2;
+}
+dt {
+  color: #f2f2f2;
+}
+dd {
+  color: #f2f2f2;
+}
+body {
+  background-image: url("/Content/Pictures/backgroundImg.jpg");
+}
+@media only screen and (max-width: 768px) {
+  [class*="col-"] {
+    width: 100%;
+  }
+}

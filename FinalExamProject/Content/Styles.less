@@ -1,0 +1,79 @@
+﻿@darkBlue: #00004d;
+@lightYellow: #ffff80;
+@green: #00ff21;
+@white: #FFFFFF;
+@grey: #f2f2f2;
+@fontFamily: Verdana;
+@fonth1size: 40px;
+@fonth2size: 30px;
+@fontpsize: 14px;
+@fonth1weight: bold;
+@bgPicture: url("/Content/Pictures/backgroundImg.jpg");
+
+.input[type=file] {
+    color: @green;
+}
+
+.jumbotron {
+    h1 {
+        color: @darkBlue;
+    }
+    p {
+    color: @darkBlue;
+    }
+} 
+
+h1 {
+    color: @darkBlue;
+    font-size: @fonth1size;
+    font-weight: @fonth1weight;
+    font-family: @fontFamily;
+}
+h2 {
+    font-size: @fonth2size;
+    font-family: @fontFamily;
+    color: @green;
+}
+h3 {
+    font-size: @fonth2size;
+    font-family: @fontFamily;
+    color: @grey;
+}
+h4 {
+    font-size: @fonth2size;
+    font-family: @fontFamily;
+    color: @grey;
+}
+p {
+    font-size: @fontpsize;
+    font-family: @fontFamily;
+    color: @white;        
+}
+label {
+    color: @grey;
+}
+strong {
+    color: @grey;
+}
+address {
+    color: @grey;
+}
+dt {
+    color: @grey;
+}
+
+dd {
+    color:@grey;
+}
+
+body {
+    background-image: @bgPicture;
+}
+
+@media only screen and (max-width: 768px) {
+    [class*="col-"] {
+    width: 100%;
+    }
+}
+
+

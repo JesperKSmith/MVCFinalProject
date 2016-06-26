@@ -38,5 +38,6 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.LampId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("Like this lamp!", "AddLike", new { id = Model.LampId })
 </p>

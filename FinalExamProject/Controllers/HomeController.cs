@@ -15,14 +15,14 @@ namespace FinalExamProject.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Some more information about Worlds Ugliest Lamps";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Contact Worlds Ugliest Lamps";
 
             return View();
         }

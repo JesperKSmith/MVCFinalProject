@@ -10,7 +10,7 @@ namespace FinalExamProject.Repositories
     public class LampRepository : ILampRepository
     {
         ApplicationDbContext db = new ApplicationDbContext();
-
+        
         public void Delete(int id)
         {
             Lamp lamp = db.Lamps.Find(id);
@@ -23,9 +23,19 @@ namespace FinalExamProject.Repositories
             return db.Lamps.Find(id);
         }
 
+        public Lamp AddLikeToLamp(int id)
+        {
+            Lamp lamp = db.Lamps.Find(id);
+            lamp.Likes++;
+            db.SaveChanges();
+            return lamp;
+        }
+
         public IEnumerable<Lamp> GetAll(string search)
         {
-            var selectedLamps = (from i in db.Lamps where i.LampName.Contains(search) select i).ToList();
+            var selectedLamps = (from i in db.Lamps
+                                 where i.LampName.Contains(search)
+                                 select i).ToList();
             return selectedLamps;
         }
 

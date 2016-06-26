@@ -11,6 +11,7 @@ namespace FinalExamProject.Repositories
     {
         IEnumerable<Lamp> GetAll(string search);
         Lamp Find(int id);
+        Lamp AddLikeToLamp(int id);
         void Delete(int id);
         void InsertOrUpdate(Lamp lamp);
     }

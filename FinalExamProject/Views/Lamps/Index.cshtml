@@ -10,7 +10,7 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
+    <tr class="warning">
         <th>
             @Html.DisplayNameFor(model => model.LampName)
         </th>
@@ -25,9 +25,30 @@
         </th>
         <th></th>
     </tr>
+    @{
+        int counter = 2;
+        foreach (var item in Model) {
+            string tableClass = "success";
+            if (counter < 1)
+            {
+                counter = counter + 1;
+            }
+            else
+            {
+                counter = 0;
+            }
+            switch (counter)
+            {
+                case 0:
+                    tableClass = "alert-info";
+                    break;
+                case 1:
+                    tableClass = "success";
+                    break;
+            }
 
-@foreach (var item in Model) {
-    <tr>
+
+    <tr class="@tableClass">
         <td>
             @Html.DisplayFor(modelItem => item.LampName)
         </td>
@@ -38,16 +59,19 @@
             @Html.DisplayFor(modelItem => item.Likes)
         </td>
         <td>
-            <a href="@Url.Action("Details", "Images", new { id=item.ImageId})">
-                <img src="~/Pictures/@(item.LampImage.ImageId + item.LampImage.ImageExtension)" class="imageSizing" />
+            <a href="@Url.Action("Details", "Images", new {id = item.ImageId})">
+                <img src="~/Pictures/@(item.LampImage.ImageId + item.LampImage.ImageExtension)" class="imageSizing"/>
             </a>
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.LampId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.LampId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.LampId })
+            @Html.ActionLink("Like this lamp!", "AddLike", new { id = item.LampId }) |
+            @Html.ActionLink("Details", "Details", new {id = item.LampId}) | 
+            @Html.ActionLink("Edit", "Edit", new { id = item.LampId }) | 
+            @Html.ActionLink("Delete", "Delete", new { id = item.LampId })
+            
         </td>
     </tr>
+    }
 }
 
 </table>
